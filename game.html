@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Resistencia mágica</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="Home.HTML">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ARM.HTML">Armadura</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="MR.HTML">Resistencia mágica</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="TN.HTML">Tenacidad</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="formulario/index.html" target="_blank">Formulario</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="game.html">Game</a>
+          </li>
+        </ul>
+      </nav>
+
+    </table> 
+    <h1>¿cuantas muertes tendra tu jungla?</h1>
+	<h2>Intenta adivinar un número entre 5 y 30. Sólo tenes 5 intentos.</h2>
+	<p>¿Cuál es tu Nick? <input type="text" id="nombre"></p>
+	<button onclick="jugar_ahora()">Jugar</button>
+	<p id="rdo"></p>
+	<script>
+		function jugar_ahora() {
+
+			var max = 30;
+			var min = 5;
+			var cant_intentos = 5;
+			var acerto = false;
+			var numero_aleatorio = Math.round(Math.random() * (max - min) + min);
+			var numero;
+
+			var nombre=document.getElementById("nombre").value;
+
+			if(nombre=="")
+			{
+				alert("Por favor, ingrese su  nombre para JUGAR");
+			}
+			else
+			{
+				while(cant_intentos>0 && acerto!=true)
+				{
+					cant_intentos--;
+					numero= parseInt( prompt("Ingrese el número"));
+					if (numero==numero_aleatorio)
+					{
+						alert("Le pegaste!!");
+						acerto=true;
+					}
+					else if (numero<numero_aleatorio)
+					{
+						alert("PISTA: Murio más");
+					}
+					else if (numero>numero_aleatorio)
+					{
+						alert("PISTA: fedeo menos");
+					}
+					else
+					{
+						alert("Te quedan " + cant_intentos + " intentos");
+					}
+
+				}
+
+				document.getElementById("rdo").innerHTML="Murió un total de: <strong>" + numero_aleatorio + "</strong>"
+			}
+
+		}
+
+	</script>
+
+</body>
+</html>
